@@ -6,7 +6,7 @@
 //Implementation functions
 
 int Implementation _1(void);
-void Implementation _2(void);
-void Implementation _3(void);
+void Implementation _2(int*);
+char Implementation _3(int);
 
 #endif
