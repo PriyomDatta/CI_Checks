@@ -5,8 +5,8 @@
 
 //Implementation functions
 
-int Implementation _1(void);
-void Implementation _2(int*);
-char Implementation _3(int);
+int Implementation_1(void);
+void Implementation_2(int*);
+char Implementation_3(int);
 
 #endif
