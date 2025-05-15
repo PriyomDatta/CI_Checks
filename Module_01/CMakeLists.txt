@@ -7,23 +7,40 @@ project(Module_01)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Include directories
-include_directories(
-    Interface/inc
-    Mod/inc
+set(INTERFACE_FILES
+    Interface/src/intf.cpp
 )
 
-# Source files
-set(SOURCES
-    Interface/src/intf.cpp
+set(SOURCE_FILES
     Mod/src/Mod_000.cpp
 )
 
-# Add the library
-add_library(Module_01_lib ${SOURCES})
-
-# Make the library available for other modules
-target_include_directories(Module_01_lib PUBLIC
-    Interface/inc
-    Mod/inc
+set(TEST_FILES 
+    Test/Test_Mod_000.cpp
+    Test/mock/Mock.cpp
 )
+
+# Add the library
+add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${INTERFACE_FILES})
+
+# Make the library available for own modules
+target_include_directories(${PROJECT_NAME} PRIVATE Mod/inc)
+
+# Make the library available for other and own modules
+target_include_directories(${PROJECT_NAME} PUBLIC Interface/inc)
+
+# Add conditional compilation based on TEST flag
+if(TEST)
+
+    #Include Google Test
+    add_subdirectory(googletest)
+    include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+
+    #Add test executable
+    add_executable(testexe ${SOURCE_FILES} ${TEST_FILES} )
+    set_target_properties(testexe PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/tests)
+    target_link_libraries(testexe gtest gtest_main)
+
+else()
+    message(STATUS "TEST flag is not set.")
+endif()
