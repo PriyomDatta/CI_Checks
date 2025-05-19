@@ -145,4 +145,4 @@ char Implementation_3(int input) {
     return result;
 }
 
-//Dummy function
+//
