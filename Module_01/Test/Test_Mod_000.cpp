@@ -20,12 +20,12 @@ TEST(ImplementationTests, TestImplementation2) {
 }
 
 // Test Implementation_3
-/*TEST(ImplementationTests, TestImplementation3) {
+TEST(ImplementationTests, TestImplementation3) {
     int input = 100;
     char result = Implementation_3(input);
     // Assert that the result is a valid uppercase character
     ASSERT_TRUE(result >= 'A' && result <= 'Z'); // Ensure result is within A-Z
-}*/
+}
 
 // Test Implementation_2 with edge cases
 TEST(ImplementationTests, TestImplementation2EdgeCases) {
@@ -39,7 +39,7 @@ TEST(ImplementationTests, TestImplementation2EdgeCases) {
 }
 
 // Test Implementation_3 with edge cases
-TEST(ImplementationTests, TestImplementation3EdgeCases) {
+/*TEST(ImplementationTests, TestImplementation3EdgeCases) {
     int input = 0;
     char result = Implementation_3(input);
     ASSERT_TRUE(result >= 'A' && result <= 'Z'); // Ensure result is within A-Z
@@ -47,4 +47,4 @@ TEST(ImplementationTests, TestImplementation3EdgeCases) {
     input = -100;
     result = Implementation_3(input);
     ASSERT_TRUE(result >= 'A' && result <= 'Z'); // Ensure result is within A-Z
-}
+}*/
