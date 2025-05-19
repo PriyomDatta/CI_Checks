@@ -30,6 +30,7 @@ jobs:
 
     - name: Run tests
       if: ${{ success() }}
-      run: |
+      run: |c
+        ls
         cd build/testes
         ./testexe
