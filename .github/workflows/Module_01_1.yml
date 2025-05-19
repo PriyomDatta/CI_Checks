@@ -44,4 +44,3 @@ jobs:
       if: ${{ success() }}
       run: |
         echo "Test Passed,."
-        gh pr close ${{ github.event.pull_request.number }} --comment "Test Passed."
