@@ -1,10 +1,10 @@
 name: CI Pipeline for Module_01 only
 
 on:
-  pull_request:
+  push:
     branches:
       - master
-    types: [opened, synchronize, reopened]
+      - develop
     
 jobs:
   build:
@@ -33,3 +33,14 @@ jobs:
       run: |
         cd Module_01/build/tests
         ./testexe
+
+    - name: Check test status
+      if: ${{ failure() }}
+      run: |
+        echo "Test failed,."
+        gh pr close ${{ github.event.pull_request.number }} --comment "Test failed."
+
+    - name : Inform success
+      if: ${{ success() }}
+      run: |
+        echo "Test Passed,."
