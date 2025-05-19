@@ -144,3 +144,5 @@ char Implementation_3(int input) {
     char result = static_cast<char>((processed_data % 26) + 'A'); // Map to A-Z
     return result;
 }
+
+//Dummy function
