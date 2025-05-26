@@ -2,8 +2,7 @@ name: CI Pipeline for Module_01 only Daily check
 
 on:
   schedule:
-    branches:
-      - cron: '30 3 * * *'  # Runs at 3:30 AM UTC = 9:00 AM IST
+      - cron: '40 3 * * *'
     
 jobs:
   build:
