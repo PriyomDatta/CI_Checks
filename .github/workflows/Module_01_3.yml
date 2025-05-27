@@ -1,0 +1,40 @@
+name: CI Pipeline for Module_01 only patch trigger example
+
+on:
+  pull_request:
+    branches:
+      - master
+    types: [opened, synchronize, reopened]
+    paths:
+      -'Module_01/Mod/**'
+      -'Module_01/Test/**/*.cpp'
+      #paths-ignore:
+      #  -'Module_01/Interface
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up build environment
+      run: sudo apt-get update && sudo apt-get install -y build-essential
+
+    - name: Build project
+      run: |
+        cd Module_01
+        ./Mod_test.sh
+
+    - name: Check build status
+      if: ${{ failure() }}
+      run: |
+        echo "Build failed,."
+        gh pr close ${{ github.event.pull_request.number }} --comment "Build failed."
+
+    - name: Run tests
+      if: ${{ success() }}
+      run: |
+        cd Module_01/build/tests
+        ./testexe
