@@ -8,3 +8,5 @@ _Is working on available CICD options:-_
 
 3.Scheduled trigger:    Module_01_2.yml
 
+4.Path trigger:         Module_01_3.yml
+
